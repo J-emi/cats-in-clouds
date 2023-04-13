@@ -1,0 +1,9 @@
+Flask
+Flask-Session
+requests
+gunicorn
+flask-googlestorage
+google-cloud-storage
+cs50
+python-dotenv
+psycopg2-binary

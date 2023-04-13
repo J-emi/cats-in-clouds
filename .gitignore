@@ -3,3 +3,9 @@
 *.tfstate*
 */creds.json
 env.sh
+__pycache__/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform
+tfplan

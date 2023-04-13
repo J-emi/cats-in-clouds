@@ -3,5 +3,5 @@ provider "google" {
   region  = "europe-north1"
   zone    = "europe-north1-a"
 
-  credentials = file("./creds.json")
+  credentials = file("creds.json")
 }
