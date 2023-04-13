@@ -1,0 +1,189 @@
+body {
+    background-color: blanchedalmond;
+    color: darkslateblue;
+    font-family: 'Trebuchet MS';
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.4fr 1.6fr 0.4fr; 
+    grid-template-rows: 0.5fr 1.5fr 0.2fr; 
+    gap: 10px 0px; 
+    grid-template-areas: 
+        "navbar1 header navbar2"
+        "main main main"
+        "footer footer footer"; 
+    justify-items: center; 
+    align-items: center; 
+}
+
+footer {
+    grid-area: footer;
+    margin-top: 5vh;
+    justify-self: center;
+    align-self: end;
+    font-weight: bold;
+    font-size: 12px;
+}
+/* Navbars */
+.navbar1 {
+    grid-area: navbar1;
+}
+
+.navbar2 {
+    grid-area: navbar2;
+}
+/* Radio button to vote */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: slateblue;
+    font-family: 'Trebuchet MS';
+}
+  
+li a {
+    display: block;
+    margin-bottom: 10px; 
+    color: blanchedalmond; 
+    font-family: 'Trebuchet MS';
+    padding: 8px 16px;
+    text-decoration: none;
+}
+  
+li {
+    text-align: center;
+    border-bottom: 1px solid slateblue;
+}
+  
+li:last-child {
+    border-bottom: none;
+}
+  
+li a.active {
+    background-color: #afa2ca;
+    color: #4169E1;
+}
+  
+li a:hover:not(.active) {
+    background-color: #afa2ca;
+    color: darkslateblue;
+}
+
+/* Title of web */
+.logo-box {
+    grid-area: header;
+}
+
+.logo {
+    max-height: 30vh;
+    width: auto;
+}
+
+/* Index main content  */
+.main-content {
+    grid-area: main;
+    justify-self: center;
+    align-self: center;
+}
+
+.flex-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chonkerchart {
+    display: inline-block;
+    text-align: center;
+    width: 50vw;
+    height: auto;
+    white-space: nowrap;
+}
+
+#chonkerchart {
+    margin-top: 7%;
+    width: 100%;
+}
+
+.formatedradio {
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 5%;
+}
+
+button {
+    padding:5px 15px; 
+    background: slateblue; 
+    color: blanchedalmond;
+    font-size: 16px;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.cat-image {
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    max-width: 50vw;
+    margin-top: 0px;
+}
+
+#cat-image {
+    height: 100%;
+    border-radius: 20%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Leaderboard table  */
+
+table {
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    font-size: 22px;
+    padding: 15px;
+    text-align: left;
+    color: slateblue;
+}
+
+th {
+    font-weight: bold;
+}
+
+.next {
+    margin-top: 20px;
+}
+
+.pw-changed {
+    color: darkgreen;
+}
+
+.apology {
+    text-align: center;
+}
+
+.content-container {
+    place-self: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.btn-s {
+    text-align: center;
+}

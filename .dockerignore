@@ -1,0 +1,5 @@
+terraform/*
+env.sh
+*.md
+static/cats/
+static/UI/
