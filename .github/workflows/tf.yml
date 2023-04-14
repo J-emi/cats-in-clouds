@@ -40,7 +40,7 @@ jobs:
 
     # Run terraform plan
     - name: Terraform Plan
-      run: terraform plan
+      run: terraform plan -lock=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.TF_GOOGLE_CREDENTIALS }}
 
@@ -49,6 +49,7 @@ jobs:
       run: terraform apply -auto-approve
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.TF_GOOGLE_CREDENTIALS }}
+
   docker:
     runs-on: ubuntu-latest
 
