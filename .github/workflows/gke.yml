@@ -47,7 +47,7 @@ jobs:
     - name: Login to GAR
       uses: docker/login-action@v2
       with:
-        registry: $GAR_LOCATION-docker.pkg.dev
+        registry: europe-north1-docker.pkg.dev
         username: _json_key
         password: ${{ secrets.GCP_CREDENTIALS }}
 
