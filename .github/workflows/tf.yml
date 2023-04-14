@@ -39,6 +39,7 @@ jobs:
     - name: Terraform Plan
       run: terraform plan
       env:
+        TF_VAR_project: ${{ secrets.GKE_PROJECT }}
         GOOGLE_CREDENTIALS: ${{ secrets.TF_GOOGLE_CREDENTIALS }}
 
     # Run terraform apply
