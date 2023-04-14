@@ -44,10 +44,14 @@ jobs:
       with:
         credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
-    - name: Docker configuration
-      run: |-
-        echo ${{steps.auth.outputs.access_token}} | docker login -u oauth2accesstoken --password-stdin https://$GAR_LOCATION-docker.pkg.dev
-    # Get the GKE credentials so we can deploy to the cluster
+    - name: Login to GAR
+        uses: docker/login-action@v2
+        with:
+          registry: $GAR_LOCATION-docker.pkg.dev
+          username: _json_key
+          password: ${{ secrets.GCP_CREDENTIALS }}
+
+     # Get the GKE credentials so we can deploy to the cluster
     - name: Set up GKE credentials
       uses: google-github-actions/get-gke-credentials@v0
       with:
@@ -79,3 +83,16 @@ jobs:
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
+
+
+name: ci
+
+on:
+  push:
+    branches: main
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      -
