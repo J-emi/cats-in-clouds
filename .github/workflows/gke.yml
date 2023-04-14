@@ -18,9 +18,9 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GAR_LOCATION: eu-north1
+  GAR_LOCATION: europe-north1
   GKE_CLUSTER: chonky-gke
-  GKE_ZONE: eu-north1-a
+  GKE_ZONE: europe-north1-a
   DEPLOYMENT_NAME: chonkers
   REPOSITORY: chonky-repository
   IMAGE: chonkers-service
