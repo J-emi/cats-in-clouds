@@ -10,7 +10,6 @@ resource "google_container_cluster" "primary" {
   location                 = var.location
   initial_node_count       = 1
   remove_default_node_pool = true
-  network                  = google_compute_network.vpc.name
 }
 
 resource "google_container_node_pool" "linux_pool" {

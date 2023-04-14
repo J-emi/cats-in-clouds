@@ -1,15 +1,3 @@
-
-variable "dbuser" {
-  type        = string
-  default     = "catmaster"
-  description = "Google SQL database user"
-}
-
-variable "dbpassword" {
-  type        = string
-  description = "Google SQL database user's password"
-}
-
 variable "project" {
   description = "The GCP Project ID to deploy to."
 }
@@ -23,6 +11,6 @@ variable "cluster_name" {
 }
 
 variable "region" {
+  default     = "europe-north1"
   description = "The GCP region to deploy to."
-
 }
