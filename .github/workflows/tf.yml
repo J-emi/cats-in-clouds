@@ -3,6 +3,7 @@ name: 'Terraform CI'
 on:
   pull_request:
   push:
+    branches: [ main ]
 
 jobs:
   terraform:
@@ -13,6 +14,7 @@ jobs:
     defaults:
       run:
         shell: bash
+
         working-directory: ./terraform
 
     steps:
@@ -48,3 +50,4 @@ jobs:
       env:
         TF_VAR_project: ${{ secrets.GKE_PROJECT }}
         GOOGLE_CREDENTIALS: ${{ secrets.TF_GOOGLE_CREDENTIALS }}
+

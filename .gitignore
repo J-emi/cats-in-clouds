@@ -9,3 +9,6 @@ __pycache__/
 *.tfvars
 .terraform
 tfplan
+.DS_store
+creds.json
+publish.sh
