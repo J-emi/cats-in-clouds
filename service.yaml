@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: chonkers-service
+  name: chonkers-service
+spec:
+  ports:
+  - name: 80-2137
+    port: 80
+    protocol: TCP
+    targetPort: 2137
+  selector:
+    app: chonkers-service
+  type: LoadBalancer
+status:
+  loadBalancer: {}

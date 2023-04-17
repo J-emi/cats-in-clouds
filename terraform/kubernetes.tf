@@ -32,3 +32,59 @@ provider "kubernetes" {
     data.google_container_cluster.primary.master_auth[0].cluster_ca_certificate,
   )
 }
+
+resource "kubernetes_deployment" "chonkers" {
+  metadata {
+    name = "chonkers"
+    labels = {
+      app = "chonkers"
+    }
+  }
+
+  spec {
+    replicas = google_container_node_pool.linux_pool.initial_node_count
+
+    selector {
+      match_labels = {
+        app = "chonkers"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          app = "chonkers"
+        }
+      }
+
+      spec {
+        container {
+          image = "${var.region}-docker.pkg.dev/${google_container_cluster.primary.project}/${google_artifact_registry_repository.my-repo.repository_id}/chonkers-service"
+          name  = "chonkers"
+
+          resources {
+            limits = {
+              cpu    = "0.5"
+              memory = "512Mi"
+            }
+          }
+
+          liveness_probe {
+            http_get {
+              path = "/"
+              port = 80
+
+              http_header {
+                name  = "X-Custom-Header"
+                value = "Awesome"
+              }
+            }
+
+            initial_delay_seconds = 3
+            period_seconds        = 3
+          }
+        }
+      }
+    }
+  }
+}
