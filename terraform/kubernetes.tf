@@ -1,9 +1,3 @@
-resource "google_service_account" "node-pool-service-account" {
-  account_id   = "np-sca"
-  display_name = "node pool sa"
-  description  = "default service account for nodes in 'linux pool'"
-}
-
 resource "google_container_cluster" "primary" {
   name                     = var.cluster_name
   project                  = var.project
@@ -21,7 +15,7 @@ resource "google_container_node_pool" "linux_pool" {
     image_type      = "COS_CONTAINERD"
     machine_type    = "e2-small"
     disk_size_gb    = 30
-    service_account = google_service_account.node-pool-service-account.email
+    service_account = google_service_account.github-gar-sa.email
   }
 }
 data "google_client_config" "provider" {}
