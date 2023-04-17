@@ -5,7 +5,7 @@ resource "google_service_account" "github-gar-sa" {
 }
 
 resource "google_project_iam_member" "github_token_creator" {
-  project = google_project.project.project_id
+  project = var.project
   role    = "roles/iam.serviceAccountTokenCreator"
   member  = "serviceAccount:${google_service_account.github-gar-sa.email}"
 }
