@@ -1,26 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: "2023-04-17T21:26:30Z"
-  generation: 1
+  creationTimestamp: null
   labels:
     app: chonkers
   name: chonkers
-  namespace: default
-  resourceVersion: "2162151"
-  uid: aa5bbb1d-feba-4ca3-ac5a-0b5de62f6482
 spec:
-  progressDeadlineSeconds: 600
-  replicas: 1
-  revisionHistoryLimit: 10
+  replicas: 2
   selector:
     matchLabels:
       app: chonkers
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -28,15 +18,7 @@ spec:
         app: chonkers
     spec:
       containers:
-      - image: europe-north1-docker.pkg.dev/winged-plate-378113/chonky-repository/chonkers-service:3e9c68a8af2f670753c3aa1d3689f362cf07e4ed
-        imagePullPolicy: IfNotPresent
+      - image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
         name: chonkers-service
         resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
 status: {}
