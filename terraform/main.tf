@@ -3,7 +3,13 @@ resource "google_service_account" "github-gar-sa" {
   display_name = "Github Actions GAR SA"
   description  = "Service account for using Google Artifact Registry on GitHub Actions"
 }
-resource "google_project_iam_member" "project" {
+
+resource "google_project_iam_member" "github_token_creator" {
+  project = google_project.project.project_id
+  role    = "roles/iam.serviceAccountTokenCreator"
+  member  = "serviceAccount:${google_service_account.github-gar-sa.email}"
+}
+resource "google_project_iam_member" "github_act_sa" {
   project = var.project
   role    = "roles/artifactregistry.writer"
   member  = "serviceAccount:${google_service_account.github-gar-sa.email}"
