@@ -39,16 +39,16 @@ jobs:
 
     # Alternative option - authentication via credentials json
     - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
+      uses: 'google-github-actions/auth@v1.0.0'
       with:
         credentials_json: '${{ secrets.GAR_CREDENTIALS }}'
         token_format: 'access_token'
 
     - name: Login to GAR
-      uses: docker/login-action@v1
+      uses: docker/login-action@v1.0.0
       with:
         registry: europe-north1-docker.pkg.dev
-        username: _json_key
+        username: oauth2accesstoken
         password: '${{ steps.auth.outputs.access_token }}'
 
      # Get the GKE credentials so we can deploy to the cluster
