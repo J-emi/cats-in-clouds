@@ -29,62 +29,64 @@ provider "kubernetes" {
   host  = google_container_cluster.primary.endpoint
   token = data.google_client_config.provider.access_token
   cluster_ca_certificate = base64decode(
-    data.google_container_cluster.primary.master_auth[0].cluster_ca_certificate,
+    google_container_cluster.primary.master_auth[0].cluster_ca_certificate,
   )
 }
 
-resource "kubernetes_deployment" "chonkers" {
-  metadata {
-    name = "chonkers"
-    labels = {
-      app = "chonkers"
-    }
-  }
+# resource "kubernetes_deployment" "chonkers-deployment" {
+#   metadata {
+#     name = "chonkers"
+#     labels = {
+#       app = "chonkers"
+#     }
+#   }
 
-  spec {
-    replicas = google_container_node_pool.linux_pool.initial_node_count
+#   spec {
+#     replicas = google_container_node_pool.linux_pool.initial_node_count
 
-    selector {
-      match_labels = {
-        app = "chonkers"
-      }
-    }
+#     selector {
+#       match_labels = {
+#         app = "chonkers"
+#       }
+#     }
 
-    template {
-      metadata {
-        labels = {
-          app = "chonkers"
-        }
-      }
+#     template {
+#       metadata {
+#         labels = {
+#           app = "chonkers"
+#         }
+#       }
 
-      spec {
-        container {
-          image = "${var.region}-docker.pkg.dev/${google_container_cluster.primary.project}/${google_artifact_registry_repository.my-repo.repository_id}/chonkers-service"
-          name  = "chonkers"
+#       spec {
+#         container {
+#           image = "${var.region}-docker.pkg.dev/${google_container_cluster.primary.project}/${google_artifact_registry_repository.my-repo.repository_id}/chonkers-service"
+#           name  = "chonkers"
 
-          resources {
-            limits = {
-              cpu    = "0.5"
-              memory = "512Mi"
-            }
-          }
+#           resources {
+#             limits = {
+#               cpu    = "0.5"
+#               memory = "512Mi"
+#             }
+#           }
 
-          liveness_probe {
-            http_get {
-              path = "/"
-              port = 80
+#           liveness_probe {
+#             http_get {
+#               path = "/"
+#               port = 80
 
-              http_header {
-                name  = "X-Custom-Header"
-                value = "Awesome"
-              }
-            }
+#               http_header {
+#                 name  = "X-Custom-Header"
+#                 value = "Awesome"
+#               }
+#             }
 
-            initial_delay_seconds = 3
-            period_seconds        = 3
-          }
-        }
-      }
-    }
-  }
-}
+#             initial_delay_seconds = 3
+#             period_seconds        = 3
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
+
+# TODO: Proper Deployment setting, config map to deliver env variables, LoadBalancer Service
