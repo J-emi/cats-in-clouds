@@ -11,4 +11,4 @@ COPY templates/ templates/
 COPY static/styles.css static/styles.css
 COPY app.py ./
 
-CMD python3 ./app.py
+CMD python3 app.py
