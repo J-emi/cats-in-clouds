@@ -11,4 +11,4 @@ COPY templates/ templates/
 COPY static/styles.css static/styles.css
 COPY app.py app.py
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 main:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
