@@ -1,6 +1,6 @@
 resource "google_project_iam_member" "k8s_admin" {
   project = var.project
-  role    = "roles/container.clusterAdmin"
+  role    = "roles/container.admin"
   member  = "serviceAccount:${google_service_account.github-gar-sa.email}"
 }
 
