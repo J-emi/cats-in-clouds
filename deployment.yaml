@@ -18,6 +18,8 @@ spec:
       containers:
       - image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
         name: chonkers-service
+        ports:
+          - containerPort: 8080
         volumeMounts:
         - name: secret-volume
           mountPath: /app
