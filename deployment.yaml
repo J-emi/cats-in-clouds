@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: chonkers
-  name: chonkers-deploy
+  name: chonkers
 spec:
   replicas: 2
   selector:
@@ -16,7 +16,7 @@ spec:
         app: chonkers
     spec:
       containers:
-      - image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
+      - image: location-docker.pkg.dev/project_id/repository/image:tag
         name: chonkers-service
         ports:
           - containerPort: 8080

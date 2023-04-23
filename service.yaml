@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: chonkers
-  name: chonkers-service
+  name: chonkers
 spec:
   ports:
   - name: 80-8080
@@ -12,7 +12,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: chonkers-service
+    app: chonkers
   type: LoadBalancer
 status:
   loadBalancer: {}
