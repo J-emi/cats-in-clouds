@@ -14,10 +14,9 @@ load_dotenv()
 files = Bucket("files")
 storage = GoogleStorage(files)
 
-app = Flask(__name__)
-
 
 def create_app():
+    app = Flask(__name__)
     app.config.update(
         SESSION_FILE_DIR=mkdtemp(),
         SESSION_PERMANENT=False,
