@@ -3,6 +3,7 @@ data:
   GOOGLE_APPLICATION_CREDENTIALS: "creds.json"
   DB_FILE: "db/chonkers.db"
   BUCKET_ID: "jch-chonkers-static-assets"
+  PORT: "8080"
 
 kind: ConfigMap
 metadata:
