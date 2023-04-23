@@ -26,7 +26,7 @@ spec:
           readOnly: true
         envFrom:
         - configMapRef:
-          name: chonker-map
+            name: chonker-map
       volumes:
       - name: secret-volume
         secret:
