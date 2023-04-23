@@ -9,6 +9,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY db/ db/
 COPY templates/ templates/
 COPY static/styles.css static/styles.css
-COPY app.py .
+COPY app.py ./
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
+RUN exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
