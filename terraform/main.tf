@@ -17,7 +17,7 @@ resource "google_project_iam_member" "github_act_sa" {
 
 resource "google_project_iam_member" "storage_reader" {
   project = var.project
-  role    = "roles/storage.objectViewer"
+  role    = "roles/storage.admin"
   member  = "serviceAccount:${google_service_account.github-gar-sa.email}"
 }
 resource "google_service_account_key" "key" {
