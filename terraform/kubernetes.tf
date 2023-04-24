@@ -1,7 +1,7 @@
-resource "google_service_account" "node-pool-service-account" {
-  account_id   = "np-sca"
-  display_name = "node pool sa"
-  description  = "default service account for nodes in 'linux pool'"
+resource "google_project_iam_member" "k8s_admin" {
+  project = var.project
+  role    = "roles/container.admin"
+  member  = "serviceAccount:${google_service_account.github-gar-sa.email}"
 }
 
 resource "google_container_cluster" "primary" {
@@ -10,7 +10,6 @@ resource "google_container_cluster" "primary" {
   location                 = var.location
   initial_node_count       = 1
   remove_default_node_pool = true
-  network                  = google_compute_network.vpc.name
 }
 
 resource "google_container_node_pool" "linux_pool" {
@@ -22,7 +21,7 @@ resource "google_container_node_pool" "linux_pool" {
     image_type      = "COS_CONTAINERD"
     machine_type    = "e2-small"
     disk_size_gb    = 30
-    service_account = google_service_account.node-pool-service-account.email
+    service_account = google_service_account.github-gar-sa.email
   }
 }
 data "google_client_config" "provider" {}
@@ -30,6 +29,7 @@ provider "kubernetes" {
   host  = google_container_cluster.primary.endpoint
   token = data.google_client_config.provider.access_token
   cluster_ca_certificate = base64decode(
-    data.google_container_cluster.primary.master_auth[0].cluster_ca_certificate,
+    google_container_cluster.primary.master_auth[0].cluster_ca_certificate,
   )
 }
+

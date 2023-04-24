@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: chonkers
+  name: chonkers
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chonkers
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: chonkers
+    spec:
+      containers:
+      - image: location-docker.pkg.dev/project_id/repository/image:tag
+        name: chonkers-service
+        ports:
+          - containerPort: 8080
+        volumeMounts:
+        - name: secret-volume
+          mountPath: /secret
+          readOnly: true
+        envFrom:
+        - configMapRef:
+            name: chonker-map
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: google-api-creds
+status: {}

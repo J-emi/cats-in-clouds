@@ -1,4 +1,5 @@
-GIT_COMMIT = $(git rev-parse --short HEAD)
+#! /bin/sh
+GIT_COMMIT=$(git rev-parse --short HEAD)
 
 docker build -t europe-north1-docker.pkg.dev/${TF_VAR_project}/cats-in-clouds:${GIT_COMMIT} \
     -e BUCKET_ID=${BUCKET_ID} \
