@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  GOOGLE_APPLICATION_CREDENTIALS: "creds.json"
-  DB_FILE: "db/chonkers.db"
+  GOOGLE_APPLICATION_CREDENTIALS: "/secret/creds.json"
+  DB_FILE: "./db/chonkers.db"
   BUCKET_ID: "jch-chonkers-static-assets"
   PORT: "8080"
 
