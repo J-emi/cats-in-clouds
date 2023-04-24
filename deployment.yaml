@@ -16,7 +16,7 @@ spec:
         app: chonkers
     spec:
       containers:
-      - image: europe-north1-docker.pkg.dev/winged-plate-378113/chonky-repository/chonkers-service:f53de1fb320986bf29c346271d22336fb957c366
+      - image: location-docker.pkg.dev/project_id/repository/image:tag
         name: chonkers-service
         ports:
           - containerPort: 8080
