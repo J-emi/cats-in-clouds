@@ -5,6 +5,7 @@
 Chonker is a colloquial term for a fat but photogenic cat. I have made a website that allows the user to assess the thickness of the cats in the photos according to a six-point scale. It is a form of fun and a reference to internet memes. That being said, I do not support fattening animals on purpose, by malnutrition or negligence.
 
 🌎 **See the page [here](http://34.88.94.239)**
+*Currently the link is not working as my trial on the Google Cloud Platform has expired. Sorry!*
 
 ## 🐾 How does my site work?
 Upon entering the website, the user may register (*Register* tab), which is recommended but not necessary. Unregistered users can rate cats, but they will not be included in the ranking (*Leaderboard* tab). All you need to register is a username and password. You can change your password at any time (*Change password* tab). A registered user can log in (*Log in* tab). Images of cats are displayed randomly on the main page, without repetition. Under the image there is chart of cat body-fat indexes. The user can decide which category the cat in the photo belongs to:
@@ -34,7 +35,17 @@ Upon entering the website, the user may register (*Register* tab), which is reco
     <a href="https://kubernetes.io" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/labs/thumb/b/ba/Kubernetes-icon-color.svg/2110px-Kubernetes-icon-color.svg.png" alt="kubernetes" width="40" height="40"/> </a>
 </p>
 
+- Backend API and frontend written in Python using Flask framework
+- Application is prepared for remote deployment using Docker
+- Infrastructure configuration managed with Terraform
+- Cat photos are managed and hosted in a Google Cloud Storage bucket
+- Continuous Integration through GitHub Actions and Google Cloud Artifact Registry
+- Deployment onto a 2-node Linux-based Kubernetes Cluster with a Load Balancer Service in Google Kubernetes Engine
+
+## Architecture graph
+
+<img src="https://i.imgur.com/CurfNV5.png" alt="Conceptual graph of project architecture" height="400">
+
  ## 🚀 To Do
 - PostgreSQL database
-- Complete technical documentation
 - CSS enhancement
